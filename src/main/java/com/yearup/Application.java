@@ -1,6 +1,6 @@
-package yearup.org;
+package com.yearup;
 
-public class App {
+public class Application {
     public static void main(String[] args) {
 
     }
