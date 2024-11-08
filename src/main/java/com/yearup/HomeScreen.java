@@ -36,7 +36,8 @@ public class HomeScreen {
 
     private void processNewOrderRequest() {
         NewOrderScreen newOrderScreen = new NewOrderScreen();
-        newOrderScreen.display();
+        newOrderScreen.displayEntries();
+        newOrderScreen.displayMenu();
     }
 
 

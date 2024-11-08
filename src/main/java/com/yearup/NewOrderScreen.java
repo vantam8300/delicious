@@ -1,18 +1,31 @@
 package com.yearup;
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+
 import static com.yearup.util.Util.*;
 
 public class NewOrderScreen {
-
+    Order order;
     public NewOrderScreen() {
+        order = new Order(UUID.randomUUID().toString(), LocalDateTime.now());
     }
 
-    private void init() {
+
+    public void displayEntries() {
+        for (Item item : order.getItems()) {
+            if (item instanceof Sandwich) {
+                System.out.println(CYAN + "  - " + item + RESET);
+            } else if (item instanceof Drink) {
+                System.out.println(CYAN + "  - " + item + RESET);
+            } else if (item instanceof Chip) {
+                System.out.println(CYAN + "  - " + item + RESET);
+            }
+        }
     }
 
 
-    public void display() {
-        init();
+    public void displayMenu() {
         boolean exit = false;
         while (!exit) {
             String newOrderOption = (String) promptUser(

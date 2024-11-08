@@ -3,7 +3,7 @@ package com.yearup;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sandwich {
+public class Sandwich implements Item{
     private String size;
     private String bread;
     private double price;
@@ -11,6 +11,7 @@ public class Sandwich {
     private boolean isToasted;
 
     public void addTopping(Topping topping) {
+
         toppings.add(topping);
     }
 
@@ -30,10 +31,12 @@ public class Sandwich {
     }
 
     public void setSize(String size) {
+
         this.size = size;
     }
 
     public String getSize() {
+
         return size;
     }
 
@@ -42,30 +45,48 @@ public class Sandwich {
     }
 
     public void setBread(String bread) {
+
         this.bread = bread;
     }
 
     public double getPrice() {
+
         return price;
     }
 
     public void setPrice(double price) {
+
         this.price = price;
     }
 
     public List<Topping> getToppings() {
+
         return toppings;
     }
 
     public void setToppings(List<Topping> toppings) {
+
         this.toppings = toppings;
     }
 
     public boolean isToasted() {
+
         return isToasted;
     }
 
     public void setToasted(boolean toasted) {
+
         isToasted = toasted;
+    }
+
+    @Override
+    public String toString() {
+        return "Sandwich{" +
+                "size='" + size + '\'' +
+                ", bread='" + bread + '\'' +
+                ", price=" + price +
+                ", toppings=" + toppings +
+                ", isToasted=" + isToasted +
+                '}';
     }
 }

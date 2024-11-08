@@ -1,16 +1,27 @@
 package com.yearup;
 
-public class Drink {
+public class Drink implements Item{
     private String size;
     private double price;
+    private String flavor;
 
-    public Drink(String size, double price) {
+    public Drink(String size, double price, String flavor) {
         this.size = size;
         this.price = price;
+        this.flavor = flavor;
     }
 
-    public Drink(String size) {
+    public Drink(String flavor, String size) {
+        this.flavor = flavor;
         this.size = size;
+    }
+
+    public String getFlavor() {
+        return flavor;
+    }
+
+    public void setFlavor(String flavor) {
+        this.flavor = flavor;
     }
 
     public double getPrice() {
@@ -35,5 +46,14 @@ public class Drink {
 
     public void setSize(String size) {
         this.size = size;
+    }
+
+    @Override
+    public String toString() {
+        return "Drink{" +
+                "size='" + size + '\'' +
+                ", price=" + price +
+                ", flavor='" + flavor + '\'' +
+                '}';
     }
 }
