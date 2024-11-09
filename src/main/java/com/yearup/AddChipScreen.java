@@ -7,7 +7,6 @@ public class AddChipScreen {
 
     // Create Chip instance to store user input data
     public AddChipScreen() {
-       chip = new Chip();
     }
 
     // prompt user for chip type and quantity
@@ -16,24 +15,28 @@ public class AddChipScreen {
 
         boolean exit = false;
         while (!exit) {
-            String chipTypeOption = (String) promptUser("What type of chip would you like" +
+            String chipTypeOption = (String) promptUser("What type of chip would you like\n" +
                     "1 - Lays Classic\n" +
                     "2 - Doritos Nacho Cheese \n" +
                     "3 - Doritos Cool Ranch \n" +
                     "4 - Fritos original \n" +
-                    "0 - Go back", "String", false);
+                    "0 - Go back\n", "String", false);
             switch (Integer.parseInt(chipTypeOption)) {
                 case 1:
                     chipType = "Lays Classic";
+                    exit = true;
                     break;
                 case 2:
                     chipType = "Doritos Nacho Cheese";
+                    exit = true;
                     break;
                 case 3:
                     chipType = "Doritos Cool Ranch";
+                    exit = true;
                     break;
                 case 4:
                     chipType = "Fritos original";
+                    exit = true;
                     break;
                 case 0:
                     exit = true;
@@ -43,12 +46,7 @@ public class AddChipScreen {
             }
         }
 
-        chip.setType(chipType);
-
-        int quantity = (int) promptUser("How many would you like to order","int", false);
-        chip.setQuantity(quantity);
-        chip.setPrice(quantity * 1.5);
-
-
+        int quantity = (int) promptUser("How many would you like to order? ","int", false);
+        chip = new Chip(quantity, chipType);
     }
 }

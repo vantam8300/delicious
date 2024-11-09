@@ -1,25 +1,13 @@
 package com.yearup;
 
-public class Chip implements Item{
-    private double price;
+public class Chip extends Item{
     private String type;
-    private int quantity;
 
-    public Chip() {
-    }
-
-    public Chip(String type, int quantity) {
+    public Chip(int quantity, String type) {
+        super(quantity);
         this.type = type;
-        this.quantity = quantity;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 
     public String getType() {
         return type;
@@ -29,19 +17,23 @@ public class Chip implements Item{
         this.type = type;
     }
 
-    public double getPrice() {
-        return price;
+    @Override
+    public double getTotalPrice() {
+        return getQuantity() * getPrice();
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    @Override
+    public double getPrice() {
+        return 1.5;
     }
 
     @Override
     public String toString() {
         return "Chip{" +
-                "price=" + price +
-                ", type='" + type + '\'' +
+                "type='" + type + '\'' +
+                "quantity='" + getQuantity() + '\'' +
+                "price='" + getPrice() + '\'' +
+                "total price='" + getTotalPrice() + '\'' +
                 '}';
     }
 }

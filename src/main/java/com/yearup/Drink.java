@@ -1,19 +1,14 @@
 package com.yearup;
 
-public class Drink implements Item{
+public class Drink extends Item{
     private String size;
-    private double price;
     private String flavor;
 
-    public Drink(String size, double price, String flavor) {
-        this.size = size;
-        this.price = price;
-        this.flavor = flavor;
-    }
 
-    public Drink(String flavor, String size) {
-        this.flavor = flavor;
+    public Drink(int quantity, String size, String flavor) {
+        super(quantity);
         this.size = size;
+        this.flavor = flavor;
     }
 
     public String getFlavor() {
@@ -22,22 +17,6 @@ public class Drink implements Item{
 
     public void setFlavor(String flavor) {
         this.flavor = flavor;
-    }
-
-    public double getPrice() {
-
-        if (size.equalsIgnoreCase("small")) {
-            this.price = 2.00;
-        } else if (size.equalsIgnoreCase("medium")) {
-            this.price = 2.50;
-        } else if (size.equalsIgnoreCase("large")){
-            this.price = 3.00;
-        }
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public String getSize() {
@@ -49,10 +28,29 @@ public class Drink implements Item{
     }
 
     @Override
+    public double getTotalPrice() {
+        return getPrice() * getQuantity();
+    }
+
+    @Override
+    public double getPrice() {
+
+        if (size.equalsIgnoreCase("small")) {
+            return 2.00;
+        } else if (size.equalsIgnoreCase("medium")) {
+            return 2.50;
+        } else if (size.equalsIgnoreCase("large")){
+            return 3.00;
+        }
+
+        return 0;
+    }
+
+    @Override
     public String toString() {
         return "Drink{" +
                 "size='" + size + '\'' +
-                ", price=" + price +
+                ", price=" + getPrice() +
                 ", flavor='" + flavor + '\'' +
                 '}';
     }

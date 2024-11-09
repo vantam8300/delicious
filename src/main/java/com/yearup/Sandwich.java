@@ -3,31 +3,23 @@ package com.yearup;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sandwich implements Item{
+public class Sandwich extends Item{
     private String size;
     private String bread;
-    private double price;
     private List<Topping> toppings;
     private boolean isToasted;
+
+    public Sandwich(int quantity, String size, String bread, List<Topping> toppings, boolean isToasted) {
+        super(quantity);
+        this.size = size;
+        this.bread = bread;
+        this.toppings = toppings;
+        this.isToasted = isToasted;
+    }
 
     public void addTopping(Topping topping) {
 
         toppings.add(topping);
-    }
-
-    public Sandwich(String size, String bread, boolean isToasted) {
-        this.size = size;
-        this.bread = bread;
-        this.isToasted = isToasted;
-        toppings = new ArrayList<>();
-    }
-
-    public Sandwich(String size, String bread, double price, List<Topping> toppings, boolean isToasted) {
-        this.size = size;
-        this.bread = bread;
-        this.price = price;
-        this.toppings = toppings;
-        this.isToasted = isToasted;
     }
 
     public void setSize(String size) {
@@ -49,14 +41,31 @@ public class Sandwich implements Item{
         this.bread = bread;
     }
 
-    public double getPrice() {
-
-        return price;
+    @Override
+    public double getTotalPrice() {
+        return getPrice() * getQuantity();
     }
 
-    public void setPrice(double price) {
+    @Override
+    public double getPrice() {
+        double basePrice = 0.0;
 
-        this.price = price;
+        if (this.size.equals("4")) {
+            basePrice = 5.50;
+        } else if (this.size.equals("8")) {
+            basePrice = 7.00;
+        } else if (this.size.equals("12")) {
+            basePrice = 8.5;
+        }
+
+        double toppingPrice = 0;
+        for (Topping topping : toppings) {
+            if (topping instanceof PremiumTopping) {
+                toppingPrice += topping.getPriceBySize(this.size);
+            }
+        }
+
+        return basePrice + toppingPrice;
     }
 
     public List<Topping> getToppings() {
@@ -84,7 +93,7 @@ public class Sandwich implements Item{
         return "Sandwich{" +
                 "size='" + size + '\'' +
                 ", bread='" + bread + '\'' +
-                ", price=" + price +
+                ", price=" + getPrice() +
                 ", toppings=" + toppings +
                 ", isToasted=" + isToasted +
                 '}';
