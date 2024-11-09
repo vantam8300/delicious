@@ -7,11 +7,13 @@ import static com.yearup.util.Util.*;
 
 public class NewOrderScreen {
     Order order;
+
+    // initiate a Order instance with random id and dateTime is now
     public NewOrderScreen() {
         order = new Order(UUID.randomUUID().toString(), LocalDateTime.now());
     }
 
-
+    // display all added entries
     public void displayEntries() {
         for (Item item : order.getItems()) {
             if (item instanceof Sandwich) {
@@ -25,9 +27,11 @@ public class NewOrderScreen {
     }
 
 
+    // display New Order Menu
     public void displayMenu() {
         boolean exit = false;
         while (!exit) {
+            displayEntries();
             String newOrderOption = (String) promptUser(
                     "******************************\n" +
                             "New Order\n" +
@@ -63,7 +67,11 @@ public class NewOrderScreen {
     private void processCheckoutRequest() {
     }
 
+    // Initiate Add Chip Screen to display Add Chip menu
     private void processAddChipsRequest() {
+        AddChipScreen addChipScreen = new AddChipScreen();
+        addChipScreen.display();
+        order.getItems().add(addChipScreen.chip);
     }
 
     private void processAddDrinkRequest() {

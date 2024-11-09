@@ -3,10 +3,22 @@ package com.yearup;
 public class Chip implements Item{
     private double price;
     private String type;
+    private int quantity;
 
-    public Chip(double price, String type) {
-        this.price = price;
+    public Chip() {
+    }
+
+    public Chip(String type, int quantity) {
         this.type = type;
+        this.quantity = quantity;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getType() {

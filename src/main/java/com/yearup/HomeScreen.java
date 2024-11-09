@@ -7,12 +7,8 @@ public class HomeScreen {
     public HomeScreen() {
     }
 
-    private void init() {
-    }
-
-
+    // display Home screen
     public void display() {
-        init();
         boolean exit = false;
         while (!exit) {
             String homeOption = (String) promptUser(
@@ -34,11 +30,9 @@ public class HomeScreen {
         }
     }
 
+    // initiate New Order Screen and display a New Order menu
     private void processNewOrderRequest() {
         NewOrderScreen newOrderScreen = new NewOrderScreen();
-        newOrderScreen.displayEntries();
         newOrderScreen.displayMenu();
     }
-
-
 }
