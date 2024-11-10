@@ -8,6 +8,9 @@ public abstract class Item {
         this.quantity = quantity;
     }
 
+    public Item() {
+    }
+
     public int getQuantity() {
         return quantity;
     }

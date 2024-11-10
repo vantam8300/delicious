@@ -34,27 +34,26 @@ public class NewOrderScreen {
             displayEntries();
             String newOrderOption = (String) promptUser(
                     "******************************\n" +
-                            "New Order\n" +
                             "1 - Add Sandwich\n" +
                             "2 - Add Drink\n" +
                             "3 - Add Chips\n" +
                             "4 - Checkout\n" +
                             "0 - Cancel Order\n" , "string", false);
 
-            switch (Integer.parseInt(newOrderOption)) {
-                case 1:
+            switch (newOrderOption) {
+                case "1":
                     processAddSandwichRequest();
                     break;
-                case 2:
+                case "2":
                     processAddDrinkRequest();
                     break;
-                case 3:
+                case "3":
                     processAddChipsRequest();
                     break;
-                case 4:
+                case "4":
                     processCheckoutRequest();
                     break;
-                case 0:
+                case "0":
                     System.out.println(CYAN + "You canceled the order" + RESET);
                     exit = true;
                     break;
@@ -91,6 +90,8 @@ public class NewOrderScreen {
     }
 
     private void processAddSandwichRequest() {
+        AddSandwichScreen addSandwichScreen = new AddSandwichScreen();
+        addSandwichScreen.display();
     }
 
 

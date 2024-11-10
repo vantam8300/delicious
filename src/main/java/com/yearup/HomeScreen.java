@@ -15,12 +15,12 @@ public class HomeScreen {
                     "1 - New Order\n" +
                             "0 - Exit\n", "string", false);
 
-            switch (Integer.parseInt(homeOption)) {
-                case 1:
+            switch (homeOption) {
+                case "1":
                     processNewOrderRequest();
                     break;
 
-                case 0:
+                case "0":
                     System.out.println(CYAN + "Thank you for using application" + RESET);
                     exit = true;
                     break;

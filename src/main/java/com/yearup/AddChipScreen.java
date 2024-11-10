@@ -21,24 +21,24 @@ public class AddChipScreen {
                     "3 - Doritos Cool Ranch \n" +
                     "4 - Fritos original \n" +
                     "0 - Go back\n", "String", false);
-            switch (Integer.parseInt(chipTypeOption)) {
-                case 1:
+            switch (chipTypeOption) {
+                case "1":
                     chipType = "Lays Classic";
                     exit = true;
                     break;
-                case 2:
+                case "2":
                     chipType = "Doritos Nacho Cheese";
                     exit = true;
                     break;
-                case 3:
+                case "3":
                     chipType = "Doritos Cool Ranch";
                     exit = true;
                     break;
-                case 4:
+                case "4":
                     chipType = "Fritos original";
                     exit = true;
                     break;
-                case 0:
+                case "s":
                     exit = true;
                     break;
                 default:

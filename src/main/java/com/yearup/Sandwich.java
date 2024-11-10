@@ -7,7 +7,7 @@ public class Sandwich extends Item{
     private String size;
     private String bread;
     private List<Topping> toppings;
-    private boolean isToasted;
+    private Boolean isToasted;
 
     public Sandwich(int quantity, String size, String bread, List<Topping> toppings, boolean isToasted) {
         super(quantity);
@@ -15,6 +15,10 @@ public class Sandwich extends Item{
         this.bread = bread;
         this.toppings = toppings;
         this.isToasted = isToasted;
+    }
+
+    public Sandwich() {
+        super();
     }
 
     public void addTopping(Topping topping) {
@@ -78,7 +82,7 @@ public class Sandwich extends Item{
         this.toppings = toppings;
     }
 
-    public boolean isToasted() {
+    public Boolean isToasted() {
 
         return isToasted;
     }

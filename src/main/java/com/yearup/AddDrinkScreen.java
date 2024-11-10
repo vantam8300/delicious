@@ -24,32 +24,32 @@ public class AddDrinkScreen {
                     "5 - Dr pepper\n" +
                     "6 - Root beer\n" +
                     "0 - Go back\n", "String", false);
-            switch (Integer.parseInt(drinkFlavorOption)) {
-                case 1:
+            switch (drinkFlavorOption) {
+                case "1":
                     flavor = "Coke";
                     exit = true;
                     break;
-                case 2:
+                case "2":
                     flavor = "Sprite";
                     exit = true;
                     break;
-                case 3:
+                case "3":
                     flavor = "Diet Coke";
                     exit = true;
                     break;
-                case 4:
+                case "4":
                     flavor = "Fanta";
                     exit = true;
                     break;
-                case 5:
+                case "5":
                     flavor = "Dr pepper";
                     exit = true;
                     break;
-                case 6:
+                case "6":
                     flavor = "Root beer";
                     exit = true;
                     break;
-                case 0:
+                case "0":
                     exit = true;
                     break;
                 default:
