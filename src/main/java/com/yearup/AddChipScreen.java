@@ -46,7 +46,9 @@ public class AddChipScreen {
             }
         }
 
-        int quantity = (int) promptUser("How many would you like to order? ","int", false);
-        chip = new Chip(quantity, chipType);
+        if (chipType != null) {
+            int quantity = (int) promptUser("How many would you like to order? ","int", false);
+            chip = new Chip(quantity, chipType);
+        }
     }
 }

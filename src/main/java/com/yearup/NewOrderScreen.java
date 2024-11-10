@@ -71,10 +71,23 @@ public class NewOrderScreen {
     private void processAddChipsRequest() {
         AddChipScreen addChipScreen = new AddChipScreen();
         addChipScreen.display();
-        order.getItems().add(addChipScreen.chip);
+
+        // check if user enter chip then add to order
+        if (addChipScreen.chip != null) {
+            order.getItems().add(addChipScreen.chip);
+
+        }
     }
 
     private void processAddDrinkRequest() {
+        AddDrinkScreen addDrinkScreen = new AddDrinkScreen();
+        addDrinkScreen.display();
+
+        // check if user enter chip then add to order
+        if (addDrinkScreen.drink != null) {
+            order.getItems().add(addDrinkScreen.drink);
+
+        }
     }
 
     private void processAddSandwichRequest() {
