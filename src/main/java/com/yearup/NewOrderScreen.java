@@ -92,6 +92,10 @@ public class NewOrderScreen {
     private void processAddSandwichRequest() {
         AddSandwichScreen addSandwichScreen = new AddSandwichScreen();
         addSandwichScreen.display();
+        if (addSandwichScreen.sandwich != null) {
+            order.getItems().add(addSandwichScreen.sandwich);
+
+        }
     }
 
 

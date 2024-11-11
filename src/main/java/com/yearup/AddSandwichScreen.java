@@ -5,7 +5,7 @@ import static com.yearup.util.Util.*;
 public class AddSandwichScreen {
     Sandwich sandwich;
 
-    // Create Sanwich instance to store user input data
+    // Create Sandwich instance to store user input data
     public AddSandwichScreen() {
         sandwich = new Sandwich();
     }
@@ -36,9 +36,10 @@ public class AddSandwichScreen {
                     processToastRequest();
                     break;
                 case "5":
-                    processAddToCartRequest();
+                    exit = processAddToCartRequest();
                     break;
                 case "0":
+                    sandwich = null;
                     exit = true;
                     break;
                 default:
@@ -48,10 +49,42 @@ public class AddSandwichScreen {
         }
     }
 
-    private void processAddToCartRequest() {
+    private boolean processAddToCartRequest() {
+        if (sandwich.isToasted() != null && sandwich.getSize() != null && sandwich.getBread() != null && !sandwich.getToppings().isEmpty()) {
+            return true;
+        } else {
+            System.out.println(RED + "You need to complete all the options above" + RESET);
+            return false;
+        }
     }
 
     private void processToastRequest() {
+        Boolean isToasted = null;
+        boolean exit = false;
+        while (!exit) {
+            String breadOption = (String) promptUser("Would you like to toast your bread\n" +
+                    "1 - Yes       "  + (sandwich.isToasted() != null && sandwich.isToasted() ? "✓\n" : "\n" ) +
+                    "2 - No       "  + (sandwich.isToasted() != null && !sandwich.isToasted()  ? "✓\n" : "\n" ) +
+                    "3 - Back       " , "string", false);
+            switch (breadOption) {
+                case "1":
+                    isToasted = true;
+                    exit = true;
+                    break;
+                case "2":
+                    isToasted = false;
+                    exit = true;
+                    break;
+                case "3":
+                    exit = true;
+                    break;
+                default:
+                    System.out.println(RED + "You enter invalid input please try again!!!" + RESET);
+            }
+            if (isToasted != null) {
+                sandwich.setToasted(isToasted);
+            }
+        }
     }
 
     private void processSelectSizeRequest() {
@@ -118,5 +151,8 @@ public class AddSandwichScreen {
     private void processAddToppingRequest() {
         AddToppingScreen addToppingScreen = new AddToppingScreen();
         addToppingScreen.display();
+        if (addToppingScreen.toppings != null) {
+            sandwich.setToppings(addToppingScreen.toppings);
+        }
     }
 }

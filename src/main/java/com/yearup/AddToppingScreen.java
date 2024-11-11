@@ -39,9 +39,10 @@ public class AddToppingScreen {
                     processSelectSauceRequest();
                     break;
                 case "5":
-                    processCompleteRequest();
+                    exit = processCompleteRequest();
                     break;
                 case "0":
+                    toppings = null;
                     exit = true;
                     break;
                 default:
@@ -51,7 +52,13 @@ public class AddToppingScreen {
         }
     }
 
-    private void processCompleteRequest() {
+    private boolean processCompleteRequest() {
+        if (toppings.stream().anyMatch(t -> t instanceof Meat) && toppings.stream().anyMatch(t -> t instanceof Cheese)) {
+            return true;
+        } else {
+            System.out.println(RED + "You need to select both Cheese and Meat" + RESET);
+            return false;
+        }
     }
 
     private void processSelectSauceRequest() {
@@ -61,6 +68,75 @@ public class AddToppingScreen {
     }
 
     private void processSelectCheeseRequest() {
+        String cheeseType = null;
+        boolean exit = false;
+        while (!exit) {
+            String cheeseOption = (String) promptUser("Select Cheese\n" +
+                    "1 - American       "  + (!toppings.isEmpty()  && containPremiumTopping("American") ? "✓\n" : "\n" ) +
+                    "2 - Provolone       "  + (!toppings.isEmpty()  && containPremiumTopping("Provolone") ? "✓\n" : "\n" ) +
+                    "3 - Cheddar      " + (!toppings.isEmpty()  && containPremiumTopping("Cheddar") ? "✓\n" : "\n" ) +
+                    "4 - Swiss      " + (!toppings.isEmpty()  && containPremiumTopping("Swiss") ? "✓\n" : "\n" ) +
+                    "0 - Back\n", "string", false);
+            switch (cheeseOption) {
+                case "1":
+                    cheeseType = "American";
+                    exit = true;
+                    break;
+                case "2":
+                    cheeseType = "Provolone";
+                    exit = true;
+                    break;
+                case "3":
+                    cheeseType = "Cheddar";
+                    exit = true;
+                    break;
+                case "4":
+                    cheeseType = "Swiss";
+                    exit = true;
+                    break;
+                case "0":
+                    exit = true;
+                    break;
+                default:
+                    System.out.println(RED + "You enter invalid input please try again!!!" + RESET);
+            }
+        }
+        Boolean extraCheese = null;
+        if (cheeseType != null) {
+            exit = false;
+            while (!exit) {
+                String ExtraMeatOption = (String) promptUser("Extra Cheese?\n" +
+                        "1 - Yes       "  + (!toppings.isEmpty()  && isExtraCheeseTopping(true) ? "✓\n" : "\n" ) +
+                        "2 - No       "  + (!toppings.isEmpty()  && isExtraCheeseTopping(false) ? "✓\n" : "\n" ), "string", false);
+                switch (ExtraMeatOption) {
+                    case "1":
+                        extraCheese = true;
+                        exit = true;
+                        break;
+                    case "2":
+                        extraCheese = false;
+                        exit = true;
+                        break;
+                    default:
+                        System.out.println(RED + "You enter invalid input please try again!!!" + RESET);
+                }
+            }
+
+            if (toppings.stream().anyMatch(t -> t instanceof Cheese)) {
+                // modify meat type if selected
+                for (Topping t : toppings) {
+                    if (t instanceof Cheese) {
+                        ((Cheese) t).setExtra(extraCheese);
+                        t.setType(cheeseType);
+                        break;
+                    }
+                }
+            } else {
+                // add new meat type to topping
+                Cheese cheese = new Cheese(cheeseType, extraCheese);
+                toppings.add(cheese);
+            }
+        }
     }
 
     private void processSelectMeatRequest() {
@@ -74,7 +150,7 @@ public class AddToppingScreen {
                     "4 - Roast Beef      " + (!toppings.isEmpty()  && containPremiumTopping("Roast Beef") ? "✓\n" : "\n" ) +
                     "5 - Chicken      " + (!toppings.isEmpty()  && containPremiumTopping("Chicken") ? "✓\n" : "\n" ) +
                     "6 - Bacon      " + (!toppings.isEmpty()  && containPremiumTopping("Bacon") ? "✓\n" : "\n" ) +
-                    "7 - Back\n", "string", false);
+                    "0 - Back\n", "string", false);
             switch (meatOption) {
                 case "1":
                     meatType = "Steak";
@@ -100,7 +176,7 @@ public class AddToppingScreen {
                     meatType = "Bacon";
                     exit = true;
                     break;
-                case "7":
+                case "0":
                     exit = true;
                     break;
                 default:
@@ -162,6 +238,15 @@ public class AddToppingScreen {
                 return ((Meat) t).isExtra() == isExtra;
             }
 
+        }
+        return false;
+    }
+
+    private boolean isExtraCheeseTopping(boolean isExtra) {
+        for (Topping t : toppings) {
+            if (t instanceof Cheese) {
+                return ((Cheese) t).isExtra() == isExtra;
+            }
         }
         return false;
     }
