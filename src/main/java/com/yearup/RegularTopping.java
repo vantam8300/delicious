@@ -8,7 +8,6 @@ public class RegularTopping extends Topping{
         super(type);
     }
 
-    @Override
     public double getPriceBySize(String size) {
         return 0.0;  // Regular toppings are free
     }

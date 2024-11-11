@@ -65,7 +65,7 @@ public class Sandwich extends Item{
         double toppingPrice = 0;
         for (Topping topping : toppings) {
             if (topping instanceof PremiumTopping) {
-                toppingPrice += topping.getPriceBySize(this.size);
+                toppingPrice += ((PremiumTopping) topping).getPriceBySize(this.size);
             }
         }
 
@@ -94,12 +94,20 @@ public class Sandwich extends Item{
 
     @Override
     public String toString() {
-        return "Sandwich{" +
-                "size='" + size + '\'' +
-                ", bread='" + bread + '\'' +
-                ", price=" + getPrice() +
-                ", toppings=" + toppings +
-                ", isToasted=" + isToasted +
-                '}';
+        StringBuilder toppingsList = new StringBuilder();
+
+        for (Topping topping : toppings) {
+            toppingsList.append("\n    - ").append(topping.getType());
+            if (topping instanceof PremiumTopping) {
+                toppingsList.append("    - Extra: ").append(((PremiumTopping) topping).isExtra() ? "Yes" : "No");
+            }
+        }
+
+        return "Sandwich Details:" +
+                "\n- Size: " + size + " inches" +
+                "\n- Bread: " + bread +
+                "\n- Toppings: " + toppingsList +
+                "\n- Toasted: " + (isToasted ? "Yes" : "No") +
+                "\n- Price: $" + String.format("%.2f", getPrice());
     }
 }

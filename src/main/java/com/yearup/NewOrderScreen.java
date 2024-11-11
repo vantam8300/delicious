@@ -8,7 +8,7 @@ import static com.yearup.util.Util.*;
 public class NewOrderScreen {
     Order order;
 
-    // initiate a Order instance with random id and dateTime is now
+    // initiate an Order instance with random id and dateTime is now
     public NewOrderScreen() {
         order = new Order(UUID.randomUUID().toString(), LocalDateTime.now());
     }

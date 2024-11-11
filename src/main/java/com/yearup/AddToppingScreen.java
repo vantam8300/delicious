@@ -62,9 +62,142 @@ public class AddToppingScreen {
     }
 
     private void processSelectSauceRequest() {
+        String sauceType = null;
+        boolean exit = false;
+        while (!exit) {
+            String sauceOption = (String) promptUser(
+                    "******************************\n" +
+                            "1 - Mayo      " + (toppings.stream().anyMatch(t -> t.getType().equalsIgnoreCase("Mayo")) ? "✓\n" : "\n" ) +
+                            "2 - Mustard      " + (toppings.stream().anyMatch(t -> t.getType().equalsIgnoreCase("Mustard")) ? "✓\n" : "\n" ) +
+                            "3 - Ketchup       " + (toppings.stream().anyMatch(t -> t.getType().equalsIgnoreCase("Ketchup")) ? "✓\n" : "\n" ) +
+                            "4 - Ranch       " + (toppings.stream().anyMatch(t -> t.getType().equalsIgnoreCase("Ranch")) ? "✓\n" : "\n" ) +
+                            "5 - Thousand islands       " + (toppings.stream().anyMatch(t -> t.getType().equalsIgnoreCase("Thousand islands")) ? "✓\n" : "\n" ) +
+                            "6 - Vinaigrette       " + (toppings.stream().anyMatch(t -> t.getType().equalsIgnoreCase("Vinaigrette")) ? "✓\n" : "\n" ) +
+                            "0 - Go Back\n" , "string", false);
+            switch (sauceOption) {
+                case "1":
+                    sauceType = "Mayo";
+                    exit = true;
+                    break;
+                case "2":
+                    sauceType = "Mustard";
+                    exit = true;
+                    break;
+                case "3":
+                    sauceType = "Ketchup";
+                    exit = true;
+                    break;
+                case "4":
+                    sauceType = "Ranch";
+                    exit = true;
+                    break;
+                case "5":
+                    sauceType = "Thousand islands";
+                    exit = true;
+                    break;
+                case "6":
+                    sauceType = "Vinaigrette";
+                    exit = true;
+                    break;
+                case "0":
+                    exit = true;
+                    break;
+                default:
+                    System.out.println(RED + "You enter invalid input please try again!!!" + RESET);
+            }
+        }
+        if (sauceType != null) {
+            String finalSauceType = sauceType;
+            if (toppings.stream().anyMatch(t -> t.getType().equalsIgnoreCase(finalSauceType))) {
+                // delete topping type if selected
+                for (Topping t : toppings) {
+                    if (t.getType().equalsIgnoreCase(sauceType)) {
+                        toppings.remove(t);
+                        break;
+                    }
+                }
+            } else {
+                OtherTopping  otherTopping = new OtherTopping(sauceType);
+                toppings.add(otherTopping);
+            }
+        }
     }
 
     private void processOtherToppingRequest() {
+        String toppingType = null;
+        boolean exit = false;
+        while (!exit) {
+            String AddOtherToppingOption = (String) promptUser(
+                    "******************************\n" +
+                            "1 - Lettuce      " + (toppings.stream().anyMatch(t -> t.getType().equalsIgnoreCase("Lettuce")) ? "✓\n" : "\n" ) +
+                            "2 - Peppers      " + (toppings.stream().anyMatch(t -> t.getType().equalsIgnoreCase("Peppers")) ? "✓\n" : "\n" ) +
+                            "3 - Onions       " + (toppings.stream().anyMatch(t -> t.getType().equalsIgnoreCase("Onions")) ? "✓\n" : "\n" ) +
+                            "4 - Tomatoes       " + (toppings.stream().anyMatch(t -> t.getType().equalsIgnoreCase("Tomatoes")) ? "✓\n" : "\n" ) +
+                            "5 - Jalepenos       " + (toppings.stream().anyMatch(t -> t.getType().equalsIgnoreCase("Jalepenos")) ? "✓\n" : "\n" ) +
+                            "6 - Cucumbers       " + (toppings.stream().anyMatch(t -> t.getType().equalsIgnoreCase("Cucumbers")) ? "✓\n" : "\n" ) +
+                            "7 - Pickles       " + (toppings.stream().anyMatch(t -> t.getType().equalsIgnoreCase("Pickles")) ? "✓\n" : "\n" ) +
+                            "8 - Guacamole       " + (toppings.stream().anyMatch(t -> t.getType().equalsIgnoreCase("Guacamole")) ? "✓\n" : "\n" ) +
+                            "9 - Mushrooms       " + (toppings.stream().anyMatch(t -> t.getType().equalsIgnoreCase("Mushrooms")) ? "✓\n" : "\n" ) +
+                            "0 - Go Back\n" , "string", false);
+            switch (AddOtherToppingOption) {
+                case "1":
+                    toppingType = "Lettuce";
+                    exit = true;
+                    break;
+                case "2":
+                    toppingType = "Peppers";
+                    exit = true;
+                    break;
+                case "3":
+                    toppingType = "Onions";
+                    exit = true;
+                    break;
+                case "4":
+                    toppingType = "Tomatoes";
+                    exit = true;
+                    break;
+                case "5":
+                    toppingType = "Jalepenos";
+                    exit = true;
+                    break;
+                case "6":
+                    toppingType = "Cucumbers";
+                    exit = true;
+                    break;
+                case "7":
+                    toppingType = "Pickles";
+                    exit = true;
+                    break;
+                case "8":
+                    toppingType = "Guacamole";
+                    exit = true;
+                    break;
+                case "9":
+                    toppingType = "Mushrooms";
+                    exit = true;
+                    break;
+                case "0":
+                    exit = true;
+                    break;
+                default:
+                    System.out.println(RED + "You enter invalid input please try again!!!" + RESET);
+            }
+        }
+        if (toppingType != null) {
+            String finalToppingType = toppingType;
+            if (toppings.stream().anyMatch(t -> t.getType().equalsIgnoreCase(finalToppingType))) {
+                // delete topping type if selected
+                for (Topping t : toppings) {
+                    if (t.getType().equalsIgnoreCase(toppingType)) {
+                        toppings.remove(t);
+                        break;
+                    }
+                }
+            } else {
+                OtherTopping  otherTopping = new OtherTopping(toppingType);
+                toppings.add(otherTopping);
+            }
+        }
     }
 
     private void processSelectCheeseRequest() {
