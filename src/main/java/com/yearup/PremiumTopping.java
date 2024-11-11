@@ -55,6 +55,18 @@ public class PremiumTopping extends Topping{
         this.isExtra = isExtra;
     }
 
+    public PremiumTopping(String type) {
+        super(type);
+    }
+
+    public boolean isExtra() {
+        return isExtra;
+    }
+
+    public void setExtra(boolean extra) {
+        isExtra = extra;
+    }
+
     @Override
     public double getPriceBySize(String size) {
         // get the prices map for the given size

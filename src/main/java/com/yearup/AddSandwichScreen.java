@@ -5,12 +5,12 @@ import static com.yearup.util.Util.*;
 public class AddSandwichScreen {
     Sandwich sandwich;
 
-    // Create Chip instance to store user input data
+    // Create Sanwich instance to store user input data
     public AddSandwichScreen() {
         sandwich = new Sandwich();
     }
 
-    // prompt user for chip type and quantity
+    // prompt user for sandwich option
     public void display() {
         boolean exit = false;
         while (!exit) {
@@ -116,6 +116,7 @@ public class AddSandwichScreen {
     }
 
     private void processAddToppingRequest() {
-
+        AddToppingScreen addToppingScreen = new AddToppingScreen();
+        addToppingScreen.display();
     }
 }

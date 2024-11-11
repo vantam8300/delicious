@@ -13,5 +13,9 @@ public abstract class Topping {
         return type;
     }
 
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public abstract double getPriceBySize(String size);
 }

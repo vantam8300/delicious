@@ -6,11 +6,11 @@ import static com.yearup.util.Util.promptUser;
 public class AddDrinkScreen {
     Drink drink;
 
-    // Create Chip instance to store user input data
+    // Create Drink instance to store user input data
     public AddDrinkScreen() {
     }
 
-    // prompt user for chip type and quantity
+    // prompt user for drink and quantity
     public void display() {
         String flavor = null;
 
