@@ -15,14 +15,19 @@ public class NewOrderScreen {
 
     // display all added entries
     public void displayEntries() {
+        System.out.println(CYAN + "******************************" + RESET);
+        if (order.getItems().isEmpty()) {
+            System.out.println(CYAN + "Your Cart Is Empty" + RESET);
+        }
         for (Item item : order.getItems()) {
             if (item instanceof Sandwich) {
-                System.out.println(CYAN + "  - " + item + RESET);
+                System.out.println(CYAN + "\n  - " + item + RESET);
             } else if (item instanceof Drink) {
-                System.out.println(CYAN + "  - " + item + RESET);
+                System.out.println(CYAN + "\n  - " + item + RESET);
             } else if (item instanceof Chip) {
-                System.out.println(CYAN + "  - " + item + RESET);
+                System.out.println(CYAN + "\n  - " + item + RESET);
             }
+            System.out.println();
         }
     }
 

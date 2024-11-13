@@ -29,11 +29,10 @@ public class Chip extends Item{
 
     @Override
     public String toString() {
-        return "Chip{" +
-                "type='" + type + '\'' +
-                "quantity='" + getQuantity() + '\'' +
-                "price='" + getPrice() + '\'' +
-                "total price='" + getTotalPrice() + '\'' +
-                '}';
+        return " Chip Details:" +
+                "\n- Type: " + type +
+                "\n- Quantity: " + getQuantity() +
+                "\n- Price per Item: $" + String.format("%.2f", getPrice()) +
+                "\n- Price: $" + String.format("%.2f", getTotalPrice());
     }
 }

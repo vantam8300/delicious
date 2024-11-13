@@ -48,11 +48,11 @@ public class Drink extends Item{
 
     @Override
     public String toString() {
-        return "Drink{" +
-                ", flavor='" + flavor + '\'' +
-                "size='" + size + '\'' +
-                ", price=" + getPrice() +
-                ", Total Price=" + getTotalPrice() +
-                '}';
+        return "Drink Details:" +
+                "\n- Flavor: " + flavor +
+                "\n- Size: " + size +
+                "\n- Price per Drink: $" + String.format("%.2f", getPrice()) +
+                "\n- Quantity: " + getQuantity() +
+                "\n- Price: $" + String.format("%.2f", getTotalPrice());
     }
 }
