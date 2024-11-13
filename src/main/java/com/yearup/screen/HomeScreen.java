@@ -1,4 +1,4 @@
-package com.yearup;
+package com.yearup.screen;
 
 import static com.yearup.util.Util.*;
 

@@ -1,4 +1,4 @@
-package com.yearup;
+package com.yearup.topping;
 
 public class Meat extends PremiumTopping{
     public Meat(String type) {

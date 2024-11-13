@@ -1,6 +1,4 @@
-package com.yearup;
-
-import java.util.List;
+package com.yearup.topping;
 
 public class RegularTopping extends Topping{
 

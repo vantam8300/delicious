@@ -1,4 +1,4 @@
-package com.yearup;
+package com.yearup.item;
 
 public class Chip extends Item{
     private String type;

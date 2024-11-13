@@ -1,4 +1,4 @@
-package com.yearup;
+package com.yearup.item;
 
 public abstract class Item {
     private int quantity;

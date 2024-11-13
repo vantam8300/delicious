@@ -1,4 +1,6 @@
-package com.yearup;
+package com.yearup.screen;
+
+import com.yearup.item.Order;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -13,30 +15,14 @@ public class NewOrderScreen {
         order = new Order(UUID.randomUUID().toString(), LocalDateTime.now());
     }
 
-    // display all added entries
-    public void displayEntries() {
-        System.out.println(CYAN + "******************************" + RESET);
-        if (order.getItems().isEmpty()) {
-            System.out.println(CYAN + "Your Cart Is Empty" + RESET);
-        }
-        for (Item item : order.getItems()) {
-            if (item instanceof Sandwich) {
-                System.out.println(CYAN + "\n  - " + item + RESET);
-            } else if (item instanceof Drink) {
-                System.out.println(CYAN + "\n  - " + item + RESET);
-            } else if (item instanceof Chip) {
-                System.out.println(CYAN + "\n  - " + item + RESET);
-            }
-            System.out.println();
-        }
-    }
+
 
 
     // display New Order Menu
     public void displayMenu() {
         boolean exit = false;
         while (!exit) {
-            displayEntries();
+            order.displayEntries();
             String newOrderOption = (String) promptUser(
                     "******************************\n" +
                             "1 - Add Sandwich\n" +
@@ -56,7 +42,7 @@ public class NewOrderScreen {
                     processAddChipsRequest();
                     break;
                 case "4":
-                    processCheckoutRequest();
+                    exit = processCheckoutRequest();
                     break;
                 case "0":
                     System.out.println(CYAN + "You canceled the order" + RESET);
@@ -68,7 +54,15 @@ public class NewOrderScreen {
         }
     }
 
-    private void processCheckoutRequest() {
+    private boolean processCheckoutRequest() {
+        if (order.getItems().isEmpty()) {
+            System.out.println(RED + "unable to checkout because your cart is empty" + RESET);
+            return false;
+        } else {
+            CheckoutScreen checkoutScreen = new CheckoutScreen();
+            checkoutScreen.display(order);
+            return true;
+        }
     }
 
     // Initiate Add Chip Screen to display Add Chip menu

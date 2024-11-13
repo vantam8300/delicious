@@ -1,4 +1,4 @@
-package com.yearup;
+package com.yearup.item;
 
 public class Drink extends Item{
     private String size;

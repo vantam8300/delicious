@@ -1,4 +1,4 @@
-package com.yearup;
+package com.yearup.topping;
 
 public abstract class Topping {
     private String type;

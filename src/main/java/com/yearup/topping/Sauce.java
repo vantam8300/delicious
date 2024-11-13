@@ -1,4 +1,4 @@
-package com.yearup;
+package com.yearup.topping;
 
 public class Sauce extends RegularTopping{
     public Sauce(String type) {

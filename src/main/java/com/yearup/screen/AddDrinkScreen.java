@@ -1,4 +1,6 @@
-package com.yearup;
+package com.yearup.screen;
+
+import com.yearup.item.Drink;
 
 import static com.yearup.util.Util.*;
 import static com.yearup.util.Util.promptUser;

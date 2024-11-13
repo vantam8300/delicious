@@ -1,4 +1,6 @@
-package com.yearup;
+package com.yearup.screen;
+
+import com.yearup.item.Chip;
 
 import static com.yearup.util.Util.*;
 
@@ -38,7 +40,7 @@ public class AddChipScreen {
                     chipType = "Fritos original";
                     exit = true;
                     break;
-                case "s":
+                case "0":
                     exit = true;
                     break;
                 default:

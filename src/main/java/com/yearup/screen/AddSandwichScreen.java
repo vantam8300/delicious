@@ -1,4 +1,6 @@
-package com.yearup;
+package com.yearup.screen;
+
+import com.yearup.item.Sandwich;
 
 import static com.yearup.util.Util.*;
 
@@ -45,7 +47,10 @@ public class AddSandwichScreen {
                 default:
                     System.out.println(RED + "You enter invalid input please try again!!!" + RESET);
             }
-
+        }
+        if (sandwich != null) {
+            int quantity = (int) promptUser("How many would you like to order? ","int", false);
+            sandwich.setQuantity(quantity);
         }
     }
 
@@ -64,8 +69,7 @@ public class AddSandwichScreen {
         while (!exit) {
             String breadOption = (String) promptUser("Would you like to toast your bread\n" +
                     "1 - Yes       "  + (sandwich.isToasted() != null && sandwich.isToasted() ? "✓\n" : "\n" ) +
-                    "2 - No       "  + (sandwich.isToasted() != null && !sandwich.isToasted()  ? "✓\n" : "\n" ) +
-                    "3 - Back       " , "string", false);
+                    "2 - No       "  + (sandwich.isToasted() != null && !sandwich.isToasted()  ? "✓\n" : "\n" ), "string", false);
             switch (breadOption) {
                 case "1":
                     isToasted = true;
@@ -73,9 +77,6 @@ public class AddSandwichScreen {
                     break;
                 case "2":
                     isToasted = false;
-                    exit = true;
-                    break;
-                case "3":
                     exit = true;
                     break;
                 default:
