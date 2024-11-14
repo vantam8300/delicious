@@ -1,8 +1,6 @@
 package com.yearup.screen;
 
-import com.yearup.item.BLT;
-import com.yearup.item.Order;
-import com.yearup.item.PhillyCheeseStreak;
+import com.yearup.item.*;
 import com.yearup.topping.Cheese;
 import com.yearup.topping.Meat;
 import com.yearup.topping.OtherTopping;
@@ -37,7 +35,9 @@ public class NewOrderScreen {
                             "3 - Add Chips\n" +
                             "4 - Add BLT\n" +
                             "5 - Add Philly Cheese Steak\n" +
-                            "6 - Checkout\n" +
+                            "6 - Remove Item\n" +
+                            "7 - Modify Item\n" +
+                            "8 - Checkout\n" +
                             "0 - Cancel Order\n" , "string", false);
 
             switch (newOrderOption) {
@@ -57,6 +57,12 @@ public class NewOrderScreen {
                     processPCSRequest();
                     break;
                 case "6":
+                    processRemoveRequest();
+                    break;
+                case "7":
+                    processModifyRequest();
+                    break;
+                case "8":
                     exit = processCheckoutRequest();
                     break;
                 case "0":
@@ -67,6 +73,35 @@ public class NewOrderScreen {
                     System.out.println(RED + "You enter invalid input please try again!!!" + RESET);
             }
         }
+    }
+
+    private void displayItems() {
+        List<Item> items = order.getItems();
+        for (int i=0; i<items.size(); i++) {
+            if (items.get(i) instanceof Sandwich sandwich) {
+                System.out.println(CYAN + (i+1) + " - " + sandwich + RESET);
+            } else if (items.get(i) instanceof Drink drink) {
+                System.out.println(CYAN + (i+1) + " - " + drink + RESET);
+            } else if (items.get(i) instanceof Chip chip) {
+                System.out.println(CYAN + (i+1) + " - " + chip + RESET);
+            }
+        }
+    }
+
+    private void processModifyRequest() {
+        displayItems();
+        int index = (int) promptUser("Please select an Item you would like to modify: ","int", false);
+    }
+
+    private void processRemoveRequest() {
+        if (order.getItems().isEmpty()) {
+            System.out.println(RED + "Your cart is empty" + RESET);
+        } else {
+            displayItems();
+            int index = (int) promptUser("Please select an Item you would like to modify: ","int", false);
+            order.getItems().remove(index - 1);
+        }
+
     }
 
     private void processPCSRequest() {

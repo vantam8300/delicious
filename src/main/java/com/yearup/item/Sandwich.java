@@ -96,6 +96,7 @@ public class Sandwich extends Item{
 
     @Override
     public String toString() {
+
         StringBuilder toppingsList = new StringBuilder();
 
         for (Topping topping : toppings) {
@@ -104,12 +105,12 @@ public class Sandwich extends Item{
                 toppingsList.append("    - Extra: ").append(((PremiumTopping) topping).isExtra() ? "Yes" : "No");
             }
         }
-
         return "Sandwich Details:" +
-                "\n- Size: " + size + " inches" +
-                "\n- Bread: " + bread +
-                "\n- Toppings: " + toppingsList +
-                "\n- Toasted: " + (isToasted ? "Yes" : "No") +
-                "\n- Price: $" + String.format("%.2f", getPrice());
+                " size=" + size  +
+                ", bread=" + bread +
+                ", price=$" + getPrice() +
+                ", quantity=" + getQuantity() +
+                ", isToasted=" + isToasted +
+                ", toppings=" + toppingsList.toString();
     }
 }
