@@ -12,6 +12,10 @@ public class AddDrinkScreen {
     public AddDrinkScreen() {
     }
 
+    public AddDrinkScreen(Drink drink) {
+        this.drink = drink;
+    }
+
     // prompt user for drink and quantity
     public void display() {
         String flavor = null;

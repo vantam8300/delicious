@@ -123,8 +123,8 @@ public class AddToppingScreen {
                     }
                 }
             } else {
-                OtherTopping  otherTopping = new OtherTopping(sauceType);
-                toppings.add(otherTopping);
+                Sauce  sauce = new Sauce(sauceType);
+                toppings.add(sauce);
             }
         }
     }

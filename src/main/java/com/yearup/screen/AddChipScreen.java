@@ -11,6 +11,10 @@ public class AddChipScreen {
     public AddChipScreen() {
     }
 
+    public AddChipScreen(Chip chip) {
+        this.chip = chip;
+    }
+
     // prompt user for chip type and quantity
     public void display() {
         String chipType = null;

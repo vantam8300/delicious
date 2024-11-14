@@ -89,16 +89,40 @@ public class NewOrderScreen {
     }
 
     private void processModifyRequest() {
-        displayItems();
-        int index = (int) promptUser("Please select an Item you would like to modify: ","int", false);
+        if (order.getItems().isEmpty()) {
+            System.out.println(RED + "unable to modify items because your cart is empty" + RESET);
+        } else {
+            displayItems();
+            int index = (int) promptUser("Please select an Item you would like to modify: ","int", false);
+            List<Item> items = order.getItems();
+
+            if (items.get(index-1) instanceof Sandwich sandwich) {
+
+                AddSandwichScreen addSandwichScreen = new AddSandwichScreen(sandwich);
+                addSandwichScreen.display();
+                order.getItems().set(index-1, addSandwichScreen.sandwich);
+
+            } else if (items.get(index-1) instanceof Drink drink) {
+
+                AddDrinkScreen addDrinkScreen = new AddDrinkScreen(drink);
+                addDrinkScreen.display();
+                order.getItems().set(index-1, addDrinkScreen.drink);
+
+            } else if (items.get(index-1) instanceof Chip chip) {
+
+                AddChipScreen addChipScreen = new AddChipScreen(chip);
+                addChipScreen.display();
+                order.getItems().set(index-1, addChipScreen.chip);
+            }
+        }
     }
 
     private void processRemoveRequest() {
         if (order.getItems().isEmpty()) {
-            System.out.println(RED + "Your cart is empty" + RESET);
+            System.out.println(RED + "unable to remove items because your cart is empty" + RESET);
         } else {
             displayItems();
-            int index = (int) promptUser("Please select an Item you would like to modify: ","int", false);
+            int index = (int) promptUser("Please select an Item you would like to remove: ","int", false);
             order.getItems().remove(index - 1);
         }
 

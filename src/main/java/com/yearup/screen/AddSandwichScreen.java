@@ -155,7 +155,7 @@ public class AddSandwichScreen {
 
     private void processAddToppingRequest() {
         AddToppingScreen addToppingScreen;
-        if (sandwich.getToppings().isEmpty()) {
+        if (sandwich.getToppings() == null || sandwich.getToppings().isEmpty()) {
             addToppingScreen = new AddToppingScreen();
         } else {
             addToppingScreen = new AddToppingScreen(sandwich.getToppings());
