@@ -33,17 +33,17 @@ public class Order {
         if (items.isEmpty()) {
             System.out.println(CYAN + "Your Cart Is Empty" + RESET);
         } else {
-            System.out.println(CYAN + "Items:\n" + RESET);
-            System.out.println(CYAN + "----------------------------------------------------------------------\n" + RESET);
-            System.out.println(CYAN + String.format("%-30s %-15s %-15s %s\n", "Name", "Size", "Quantity", "Price") + RESET);
-            System.out.println(CYAN + "----------------------------------------------------------------------\n" + RESET);
+            System.out.print(CYAN + "Items:\n" + RESET);
+            System.out.print(CYAN + "----------------------------------------------------------------------\n" + RESET);
+            System.out.print(CYAN + String.format("%-30s %-15s %-15s %s\n", "Name", "Size", "Quantity", "Price") + RESET);
+            System.out.print(CYAN + "----------------------------------------------------------------------\n" + RESET);
 
             double totalPrice = 0.0;
 
             for (Item item : items) {
                 if (item instanceof Sandwich sandwich) {
                     // Write Sandwich details
-                    System.out.println(CYAN + String.format("%-30s %-15s %-15d $%.2f%n",
+                    System.out.print(CYAN + String.format("%-30s %-15s %-15d $%.2f%n",
                             sandwich.getBread() + " Sandwich", // Sandwich name
                             sandwich.getSize() + " Inches",
                             sandwich.getQuantity(),           // Quantity
@@ -52,9 +52,9 @@ public class Order {
                     // Display Toppings for the Sandwich
                     List<Topping> toppings = sandwich.getToppings();  // Assuming getToppings() returns a List<String>
                     if (toppings != null && !toppings.isEmpty()) {
-                        System.out.println(CYAN + "  Toppings:\n" + RESET);
+                        System.out.print(CYAN + "  Toppings:\n" + RESET);
                         for (Topping topping : toppings) {
-                            System.out.println(CYAN + "   - " + topping.getType() + "\n" + RESET);
+                            System.out.print(CYAN + "   - " + topping.getType() + "\n" + RESET);
                         }
                     }
                 } else if (item instanceof Drink drink) {

@@ -11,8 +11,8 @@ public class Sandwich extends Item{
     private List<Topping> toppings;
     private Boolean isToasted;
 
-    public Sandwich(int quantity, String size, String bread, List<Topping> toppings, boolean isToasted) {
-        super(quantity);
+    public Sandwich(String size, String bread, List<Topping> toppings, boolean isToasted) {
+        super();
         this.size = size;
         this.bread = bread;
         this.toppings = toppings;

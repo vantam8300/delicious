@@ -1,8 +1,15 @@
 package com.yearup.screen;
 
+import com.yearup.item.BLT;
 import com.yearup.item.Order;
+import com.yearup.item.PhillyCheeseStreak;
+import com.yearup.topping.Cheese;
+import com.yearup.topping.Meat;
+import com.yearup.topping.OtherTopping;
+import com.yearup.topping.Sauce;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 import static com.yearup.util.Util.*;
@@ -25,10 +32,12 @@ public class NewOrderScreen {
             order.displayEntries();
             String newOrderOption = (String) promptUser(
                     "******************************\n" +
-                            "1 - Add Sandwich\n" +
+                            "1 - Add Customized Sandwich\n" +
                             "2 - Add Drink\n" +
                             "3 - Add Chips\n" +
-                            "4 - Checkout\n" +
+                            "4 - Add BLT\n" +
+                            "5 - Add Philly Cheese Steak\n" +
+                            "6 - Checkout\n" +
                             "0 - Cancel Order\n" , "string", false);
 
             switch (newOrderOption) {
@@ -42,6 +51,12 @@ public class NewOrderScreen {
                     processAddChipsRequest();
                     break;
                 case "4":
+                    processBLTRequest();
+                    break;
+                case "5":
+                    processPCSRequest();
+                    break;
+                case "6":
                     exit = processCheckoutRequest();
                     break;
                 case "0":
@@ -52,6 +67,20 @@ public class NewOrderScreen {
                     System.out.println(RED + "You enter invalid input please try again!!!" + RESET);
             }
         }
+    }
+
+    private void processPCSRequest() {
+        PhillyCheeseStreak pcs = new PhillyCheeseStreak("8", "White", List.of(new Meat("Steak"), new Cheese("American"), new OtherTopping("Peppers"), new Sauce("Mayo")), true);
+        AddSandwichScreen addSandwichScreen = new AddSandwichScreen(pcs);
+        addSandwichScreen.display();
+        order.getItems().add(pcs);
+    }
+
+    private void processBLTRequest() {
+        BLT blt = new BLT("8", "White", List.of(new Meat("Bacon"), new Cheese("Cheddar"), new OtherTopping("Lettuce"), new Sauce("Ranch")), true);
+        AddSandwichScreen addSandwichScreen = new AddSandwichScreen(blt);
+        addSandwichScreen.display();
+        order.getItems().add(addSandwichScreen.sandwich);
     }
 
     private boolean processCheckoutRequest() {

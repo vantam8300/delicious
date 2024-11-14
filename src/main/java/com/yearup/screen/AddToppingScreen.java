@@ -15,6 +15,10 @@ public class AddToppingScreen {
         toppings = new ArrayList<>();
     }
 
+    public AddToppingScreen(List<Topping> toppings) {
+        this.toppings = toppings;
+    }
+
     // prompt user for toppings option
     public void display() {
         boolean exit = false;

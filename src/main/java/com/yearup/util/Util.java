@@ -29,34 +29,12 @@ public class Util {
                 case "string":
                     return input;
 
-                case "double":
-                    Double doubleValue = parseDouble(input);
-                    if (doubleValue != null && doubleValue >= 0) {
-                        return doubleValue;
-                    } else if (doubleValue == null) {
-                        System.out.println(RED + "Invalid number format. Please enter a valid amount." + RESET);
-                    } else {
-                        System.out.println(RED + "Amount must be greater than zero." + RESET);
-                    }
-                    break;
-
                 case "int":
                     Integer intValue = parseInt(input);
                     if (intValue != null) {
                         return intValue;
                     } else {
                         System.out.println(RED + "Invalid number format. Please enter a valid integer." + RESET);
-                    }
-                    break;
-
-                case "date":
-                    LocalDate date = parseDate(input);
-                    if (date != null && !date.isAfter(LocalDate.now())) {
-                        return date;
-                    } else if (date == null) {
-                        System.out.println(RED + "Invalid date format. Please use YYYY-MM-DD." + RESET);
-                    } else {
-                        System.out.println(RED + "The date cannot be in the future." + RESET);
                     }
                     break;
 

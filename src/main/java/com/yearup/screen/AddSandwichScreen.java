@@ -12,6 +12,10 @@ public class AddSandwichScreen {
         sandwich = new Sandwich();
     }
 
+    public AddSandwichScreen(Sandwich sandwich) {
+        this.sandwich = sandwich;
+    }
+
     // prompt user for sandwich option
     public void display() {
         boolean exit = false;
@@ -150,7 +154,12 @@ public class AddSandwichScreen {
     }
 
     private void processAddToppingRequest() {
-        AddToppingScreen addToppingScreen = new AddToppingScreen();
+        AddToppingScreen addToppingScreen;
+        if (sandwich.getToppings().isEmpty()) {
+            addToppingScreen = new AddToppingScreen();
+        } else {
+            addToppingScreen = new AddToppingScreen(sandwich.getToppings());
+        }
         addToppingScreen.display();
         if (addToppingScreen.toppings != null) {
             sandwich.setToppings(addToppingScreen.toppings);
