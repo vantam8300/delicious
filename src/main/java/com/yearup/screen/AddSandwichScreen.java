@@ -58,6 +58,7 @@ public class AddSandwichScreen {
         }
     }
 
+    // check if user input all necessary field before add a sandwich to order
     private boolean processAddToCartRequest() {
         if (sandwich.isToasted() != null && sandwich.getSize() != null && sandwich.getBread() != null && !sandwich.getToppings().isEmpty()) {
             return true;
@@ -67,6 +68,7 @@ public class AddSandwichScreen {
         }
     }
 
+    // prompt user if they want to toast their bread
     private void processToastRequest() {
         Boolean isToasted = null;
         boolean exit = false;
@@ -92,6 +94,7 @@ public class AddSandwichScreen {
         }
     }
 
+    // prompt user for sandwich size
     private void processSelectSizeRequest() {
         String size = null;
         boolean exit = false;
@@ -120,6 +123,7 @@ public class AddSandwichScreen {
         }
     }
 
+    // prompt user for bread type
     private void processSelectBreadRequest() {
         String bread = null;
         boolean exit = false;
@@ -153,6 +157,7 @@ public class AddSandwichScreen {
         }
     }
 
+    // navigate and prompt user for topping
     private void processAddToppingRequest() {
         AddToppingScreen addToppingScreen;
         if (sandwich.getToppings() == null || sandwich.getToppings().isEmpty()) {

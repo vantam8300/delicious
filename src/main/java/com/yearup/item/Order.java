@@ -19,12 +19,12 @@ public class Order {
 
     }
 
-
     public Order(String orderId, LocalDateTime dateTime) {
         this.orderId = orderId;
         this.dateTime = dateTime;
         items = new ArrayList<>();
     }
+
     // display all added entries
     public void displayEntries() {
 
@@ -92,16 +92,8 @@ public class Order {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
-
     public LocalDateTime getDateTime() {
         return dateTime;
-    }
-
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
     }
 
     public double getTotalCost() {

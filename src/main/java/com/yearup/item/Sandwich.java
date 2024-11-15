@@ -23,11 +23,6 @@ public class Sandwich extends Item{
         super();
     }
 
-    public void addTopping(Topping topping) {
-
-        toppings.add(topping);
-    }
-
     public void setSize(String size) {
 
         this.size = size;

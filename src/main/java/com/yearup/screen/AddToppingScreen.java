@@ -16,7 +16,7 @@ public class AddToppingScreen {
     }
 
     public AddToppingScreen(List<Topping> toppings) {
-        this.toppings = toppings;
+        this.toppings = new ArrayList<>(toppings);
     }
 
     // prompt user for toppings option
@@ -58,6 +58,7 @@ public class AddToppingScreen {
         }
     }
 
+    // validate if user input both cheese and meat topping so that we can add them to a sandwich
     private boolean processCompleteRequest() {
         if (toppings.stream().anyMatch(t -> t instanceof Meat) && toppings.stream().anyMatch(t -> t instanceof Cheese)) {
             return true;
@@ -67,6 +68,7 @@ public class AddToppingScreen {
         }
     }
 
+    // prompt user for sauce
     private void processSelectSauceRequest() {
         String sauceType = null;
         boolean exit = false;
@@ -129,6 +131,7 @@ public class AddToppingScreen {
         }
     }
 
+    // prompt user for regular topping
     private void processOtherToppingRequest() {
         String toppingType = null;
         boolean exit = false;
@@ -206,6 +209,7 @@ public class AddToppingScreen {
         }
     }
 
+    // prompt user for cheese
     private void processSelectCheeseRequest() {
         String cheeseType = null;
         boolean exit = false;
@@ -278,6 +282,7 @@ public class AddToppingScreen {
         }
     }
 
+    // prompt user for meat
     private void processSelectMeatRequest() {
         String meatType = null;
         boolean exit = false;
@@ -360,6 +365,7 @@ public class AddToppingScreen {
         }
     }
 
+    // check if topping list contain Premium topping
     private boolean containPremiumTopping(String type) {
         for (Topping t : toppings) {
             if (t instanceof PremiumTopping) {
@@ -371,6 +377,7 @@ public class AddToppingScreen {
         return false;
     }
 
+    // check if user want extra on selected meat
     private boolean isExtraMeatTopping(boolean isExtra) {
         for (Topping t : toppings) {
             if (t instanceof Meat) {
@@ -381,6 +388,7 @@ public class AddToppingScreen {
         return false;
     }
 
+    // check if user want extra on selected cheese
     private boolean isExtraCheeseTopping(boolean isExtra) {
         for (Topping t : toppings) {
             if (t instanceof Cheese) {

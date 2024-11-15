@@ -84,7 +84,7 @@ public class CheckoutScreen {
                             sandwich.getPrice()));            // Price
 
                     // Display Toppings for the Sandwich
-                    List<Topping> toppings = sandwich.getToppings();  // Assuming getToppings() returns a List<String>
+                    List<Topping> toppings = sandwich.getToppings();
                     if (toppings != null && !toppings.isEmpty()) {
                         writer.write("  Toppings:\n");
                         for (Topping topping : toppings) {
@@ -92,7 +92,7 @@ public class CheckoutScreen {
                         }
                     }
                 } else if (item instanceof Drink drink) {
-                    // Write Drink details (including size)
+                    // Write Drink details
                     writer.write(String.format("%-30s %-15s %-15d $%.2f%n",
                             drink.getFlavor() + " Drink",     // Drink flavor name
                             drink.getSize(),                  // Drink size

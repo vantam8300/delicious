@@ -19,13 +19,12 @@ public abstract class Item {
         this.quantity = quantity;
     }
 
+    // calculate total price
     public abstract double getTotalPrice();
 
+    // calculate price for each item
     public abstract double getPrice();
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
 
     @Override
     public String toString() {

@@ -75,6 +75,7 @@ public class NewOrderScreen {
         }
     }
 
+    // display a list of items before remove and modify
     private void displayItems() {
         List<Item> items = order.getItems();
         for (int i=0; i<items.size(); i++) {
@@ -88,6 +89,7 @@ public class NewOrderScreen {
         }
     }
 
+    // choose and modify items
     private void processModifyRequest() {
         if (order.getItems().isEmpty()) {
             System.out.println(RED + "unable to modify items because your cart is empty" + RESET);
@@ -117,6 +119,7 @@ public class NewOrderScreen {
         }
     }
 
+    // choose and remove items
     private void processRemoveRequest() {
         if (order.getItems().isEmpty()) {
             System.out.println(RED + "unable to remove items because your cart is empty" + RESET);
@@ -128,6 +131,7 @@ public class NewOrderScreen {
 
     }
 
+    // modify and add Philly Cheese Steak signature sandwich which some default toppings to order
     private void processPCSRequest() {
         PhillyCheeseStreak pcs = new PhillyCheeseStreak("8", "White", List.of(new Meat("Steak"), new Cheese("American"), new OtherTopping("Peppers"), new Sauce("Mayo")), true);
         AddSandwichScreen addSandwichScreen = new AddSandwichScreen(pcs);
@@ -135,6 +139,7 @@ public class NewOrderScreen {
         order.getItems().add(pcs);
     }
 
+    // modify and add BLT signature sandwich which some default toppings to order
     private void processBLTRequest() {
         BLT blt = new BLT("8", "White", List.of(new Meat("Bacon"), new Cheese("Cheddar"), new OtherTopping("Lettuce"), new Sauce("Ranch")), true);
         AddSandwichScreen addSandwichScreen = new AddSandwichScreen(blt);
@@ -142,6 +147,7 @@ public class NewOrderScreen {
         order.getItems().add(addSandwichScreen.sandwich);
     }
 
+    // navigate to checkout screen
     private boolean processCheckoutRequest() {
         if (order.getItems().isEmpty()) {
             System.out.println(RED + "unable to checkout because your cart is empty" + RESET);
@@ -165,6 +171,7 @@ public class NewOrderScreen {
         }
     }
 
+    // navigate to drink screen
     private void processAddDrinkRequest() {
         AddDrinkScreen addDrinkScreen = new AddDrinkScreen();
         addDrinkScreen.display();
@@ -176,6 +183,7 @@ public class NewOrderScreen {
         }
     }
 
+    // navigate to sandwich screen
     private void processAddSandwichRequest() {
         AddSandwichScreen addSandwichScreen = new AddSandwichScreen();
         addSandwichScreen.display();

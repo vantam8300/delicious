@@ -72,6 +72,7 @@ public class AddDrinkScreen {
         }
     }
 
+    // prompt user for drink size
     private String getSize() {
         String size = null;
         boolean exit = false;

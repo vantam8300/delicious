@@ -43,26 +43,10 @@ public class Util {
         }
     }
 
-    private static Double parseDouble(String input) {
-        try {
-            return Double.parseDouble(input);
-        } catch (NumberFormatException e) {
-            return null;
-        }
-    }
-
     private static Integer parseInt(String input) {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            return null;
-        }
-    }
-
-    private static LocalDate parseDate(String input) {
-        try {
-            return LocalDate.parse(input);
-        } catch (DateTimeParseException e) {
             return null;
         }
     }
