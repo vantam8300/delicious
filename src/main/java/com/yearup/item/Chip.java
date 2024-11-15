@@ -8,6 +8,11 @@ public class Chip extends Item{
         this.type = type;
     }
 
+    public Chip() {
+
+    }
+
+
 
     public String getType() {
         return type;

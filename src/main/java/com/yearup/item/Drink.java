@@ -11,6 +11,10 @@ public class Drink extends Item{
         this.flavor = flavor;
     }
 
+    public Drink() {
+
+    }
+
     public String getFlavor() {
         return flavor;
     }

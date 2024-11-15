@@ -1,6 +1,7 @@
 package com.yearup.screen;
 
 import com.yearup.item.Drink;
+import com.yearup.topping.Meat;
 
 import static com.yearup.util.Util.*;
 import static com.yearup.util.Util.promptUser;
@@ -10,6 +11,7 @@ public class AddDrinkScreen {
 
     // Create Drink instance to store user input data
     public AddDrinkScreen() {
+        drink = new Drink();
     }
 
     public AddDrinkScreen(Drink drink) {
@@ -23,12 +25,12 @@ public class AddDrinkScreen {
         boolean exit = false;
         while (!exit) {
             String drinkFlavorOption = (String) promptUser("What flavor of drink would you like\n" +
-                    "1 - Coke\n" +
-                    "2 - Sprite\n" +
-                    "3 - Diet Coke\n" +
-                    "4 - Fanta\n" +
-                    "5 - Dr pepper\n" +
-                    "6 - Root beer\n" +
+                    "1 - Coke       " + (drink.getFlavor() != null && drink.getFlavor().equals("Coke") ? "✓\n" : "\n" ) +
+                    "2 - Sprite     " + (drink.getFlavor() != null && drink.getFlavor().equals("Sprite") ? "✓\n" : "\n" ) +
+                    "3 - Diet Coke      " + (drink.getFlavor() != null && drink.getFlavor().equals("Diet Coke") ? "✓\n" : "\n" ) +
+                    "4 - Fanta      " + (drink.getFlavor() != null && drink.getFlavor().equals("Fanta") ? "✓\n" : "\n" ) +
+                    "5 - Dr pepper      " + (drink.getFlavor() != null && drink.getFlavor().equals("Dr pepper") ? "✓\n" : "\n" ) +
+                    "6 - Root beer      " + (drink.getFlavor() != null && drink.getFlavor().equals("Root beer") ? "✓\n" : "\n" ) +
                     "0 - Go back\n", "String", false);
             switch (drinkFlavorOption) {
                 case "1":
@@ -75,9 +77,9 @@ public class AddDrinkScreen {
         boolean exit = false;
         while (!exit) {
             String sizeOption = (String) promptUser("select size\n" +
-                    "1 - Small\n" +
-                    "2 - Medium\n" +
-                    "3 - Large\n", "string", false);
+                    "1 - Small      " + (drink.getSize() != null && drink.getSize().equals("small") ? "✓\n" : "\n" ) +
+                    "2 - Medium     " + (drink.getSize() != null && drink.getSize().equals("medium") ? "✓\n" : "\n" ) +
+                    "3 - Large      " + (drink.getSize() != null && drink.getSize().equals("large") ? "✓\n" : "\n" ) , "string", false);
             switch (Integer.parseInt(sizeOption)) {
                 case 1:
                     size = "small";
