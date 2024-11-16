@@ -1,5 +1,7 @@
 package com.yearup.item;
 
+import com.yearup.topping.PremiumTopping;
+import com.yearup.topping.RegularTopping;
 import com.yearup.topping.Topping;
 
 import java.time.LocalDateTime;
@@ -47,14 +49,20 @@ public class Order {
                             sandwich.getBread() + " Sandwich", // Sandwich name
                             sandwich.getSize() + " Inches",
                             sandwich.getQuantity(),           // Quantity
-                            sandwich.getPrice()) + RESET);            // Price
+                            sandwich.getTotalPrice()) + RESET);            // Price
 
                     // Display Toppings for the Sandwich
                     List<Topping> toppings = sandwich.getToppings();  // Assuming getToppings() returns a List<String>
                     if (toppings != null && !toppings.isEmpty()) {
                         System.out.print(CYAN + "  Toppings:\n" + RESET);
                         for (Topping topping : toppings) {
-                            System.out.print(CYAN + "   - " + topping.getType() + "\n" + RESET);
+                            if (topping instanceof PremiumTopping) {
+                                System.out.print(CYAN + "   - " + topping.getType() + "   - Extra: " + (((PremiumTopping) topping).isExtra() ? "Yes" : "No") + "\n" + RESET);
+
+                            } else if (topping instanceof RegularTopping) {
+                                System.out.print(CYAN + "   - " + topping.getType() + "\n" + RESET);
+
+                            }
                         }
                     }
                 } else if (item instanceof Drink drink) {
@@ -63,15 +71,18 @@ public class Order {
                             drink.getFlavor() + " Drink",     // Drink flavor name
                             drink.getSize(),                  // Drink size
                             drink.getQuantity(),              // Quantity
-                            drink.getPrice()) + RESET);               // Price
+                            drink.getTotalPrice()) + RESET);               // Price
                 } else if (item instanceof Chip chip) {
                     // Write Chip details
                     System.out.println(CYAN + String.format("%-46s %-15d $%.2f%n",
                             chip.getType() + " Chips",        // Chip type
                             chip.getQuantity(),               // Quantity
-                            chip.getPrice()) + RESET);                // Price
+                            chip.getTotalPrice()) + RESET);                // Price
                 }
-                totalPrice += item.getTotalPrice();
+                if (item != null) {
+                    totalPrice += item.getTotalPrice();
+
+                }
             }
             setTotalCost(totalPrice);
             System.out.println(CYAN + "Total Cost: $" + String.format("%.2f", totalPrice) + "\n\n" + RESET);

@@ -20,9 +20,6 @@ public class NewOrderScreen {
         order = new Order(UUID.randomUUID().toString(), LocalDateTime.now());
     }
 
-
-
-
     // display New Order Menu
     public void displayMenu() {
         boolean exit = false;
@@ -126,7 +123,11 @@ public class NewOrderScreen {
         } else {
             displayItems();
             int index = (int) promptUser("Please select an Item you would like to remove: ","int", false);
-            order.getItems().remove(index - 1);
+            if (index <=0 || index >order.getItems().size()) {
+                System.out.println(RED + "unable to remove items because of incorrect input" + RESET);
+            } else {
+                order.getItems().remove(index - 1);
+            }
         }
 
     }
